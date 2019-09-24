@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY knowrob "http://knowrob.org/kb/knowrob.owl#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY coffeecup "http://knowrob.org/kb/coffeecup.owl#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://knowrob.org/kb/coffeecup.owl#"
+     xml:base="http://knowrob.org/kb/coffeecup.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:coffeecup="http://knowrob.org/kb/coffeecup.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:knowrob="http://knowrob.org/kb/knowrob.owl#">
+    <owl:Ontology rdf:about="http://knowrob.org/kb/coffeecup.owl">
+        <owl:imports rdf:resource="package://knowrob_common/owl/knowrob.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://knowrob.org/kb/coffeecup.owl#containsDrinkableLiquid -->
+
+    <owl:ObjectProperty rdf:about="#containsDrinkableLiquid">
+        <rdfs:domain rdf:resource="&knowrob;Container"/>
+        <rdfs:range rdf:resource="&knowrob;Drink"/>
+        <rdfs:subPropertyOf rdf:resource="&knowrob;contains"/>
+    </owl:ObjectProperty>
+
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#contains -->
+
+    <owl:ObjectProperty rdf:about="&knowrob;contains"/>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://knowrob.org/kb/coffeecup.owl#CoffeeCup -->
+
+    <owl:Class rdf:about="#CoffeeCup">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="#containsDrinkableLiquid"/>
+                <owl:someValuesFrom rdf:resource="&knowrob;Coffee-Beverage"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&knowrob;Cup"/>
+    </owl:Class>
+
+
+
+    <!-- http://knowrob.org/kb/coffeecup.owl#TeaCup -->
+
+    <owl:Class rdf:about="#TeaCup">
+        <rdfs:subClassOf rdf:resource="&knowrob;Cup"/>
+    </owl:Class>
+
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Coffee-Beverage -->
+
+    <owl:Class rdf:about="&knowrob;Coffee-Beverage"/>
+
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Container -->
+
+    <owl:Class rdf:about="&knowrob;Container"/>
+
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Cup -->
+
+    <owl:Class rdf:about="&knowrob;Cup"/>
+
+
+
+    <!-- http://knowrob.org/kb/knowrob.owl#Drink -->
+
+    <owl:Class rdf:about="&knowrob;Drink"/>
+
+
+
+    <!--
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+
+
+
+    <!-- http://knowrob.org/kb/coffeecup.owl#coffee0 -->
+
+    <knowrob:Coffee-Beverage rdf:about="#coffee0"/>
+
+
+
+    <!-- http://knowrob.org/kb/coffeecup.owl#cup0 -->
+
+    <knowrob:Cup rdf:about="#cup0">
+        <containsDrinkableLiquid rdf:resource="#coffee0"/>
+    </knowrob:Cup>
+</rdf:RDF>
+
