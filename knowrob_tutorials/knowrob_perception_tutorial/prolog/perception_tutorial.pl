@@ -25,18 +25,30 @@
 :- module(perception_tutorial,
     [
       comp_object_detection/2,
+      create_object_perception/4,
       obj_detections_listener/1
     ]).
 
 :- use_module(library('semweb/rdf_db')).
 :- use_module(library('semweb/rdfs')).
-:- use_module(library('owl')).
-:- use_module(library('owl_parser')).
+%:- use_module(library('owl')).
+:- use_module(library('semweb/owl')).
+%:- use_module(library('owl_parser')).
+:- use_module(library('semweb/owl_parser')).
 :- use_module(library('knowrob_coordinates')).
 
 
 :- rdf_db:rdf_register_ns(knowrob,  'http://knowrob.org/kb/knowrob.owl#',  [keep(true)]).
 
+
+create_object_perception(ObjClass, ObjPose, PerceptionTypes, ObjInst) :-
+    rdf_instance_from_class(ObjClass, ObjInst),
+%    create_perception_instance(PerceptionTypes, Perception),
+%    set_object_perception(ObjInst, Perception),
+%    set_perception_pose(Perception, ObjPose).
+    create_visual_perception(Perception),
+    perception_set_object(ObjInst, Perception),
+    perception_set_pose(Perception, ObjPose).
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
